@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import useApplicationData from './useApplicationData';
 import {
   BrowserRouter as Router,
@@ -9,7 +9,8 @@ import {
 import Home from './components/Home/Home';
 import Register from './components/Register/Register';
 import Products from './components/Products/Products';
-
+import Navbar from './components/Navbar';
+import Login from './components/Login/Login';
 const App = () => {
   const {
       state,
@@ -21,7 +22,9 @@ const App = () => {
 return (<div className="App" >
     <Router>
       <div>
-        <nav>
+        <Navbar />
+
+        {/* <nav>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -33,13 +36,16 @@ return (<div className="App" >
               <Link to="/products">Products</Link>
             </li>
           </ul>
-        </nav>
+        </nav> */}
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/register">
             <Register />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
           <Route path="/products">
             <Products />
