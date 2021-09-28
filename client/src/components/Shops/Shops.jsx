@@ -1,46 +1,40 @@
-import React from 'react'
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import React, {useState} from 'react'
+import { GoogleMap, useJsApiLoader, useLoadScript } from '@react-google-maps/api';
 
-const containerStyle = {
-  width: '400px',
-  height: '400px'
-};
-
+const libraries = ["places"];
+const mapContainerStyle = {
+  width: '100vw',
+  height: '80vh'
+}
 const center = {
-  lat: -3.745,
-  lng: -38.523
-};
-
-function MyComponent() {
-  const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyCOyqdA8P_YF6V0Kvfkn_XURrQoR5xT5bM"
-  })
-
-  const [map, setMap] = React.useState(null)
-
-  const onLoad = React.useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds();
-    map.fitBounds(bounds);
-    setMap(map)
-  }, [])
-
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null)
-  }, [])
-
-  return isLoaded ? (
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={10}
-        onLoad={onLoad}
-        onUnmount={onUnmount}
-      >
-        { /* Child components, such as markers, info windows, etc. */ }
-        <></>
-      </GoogleMap>
-  ) : <></>
+  lat: 43.6532,
+  lng: -79.3832
+}
+const options = {
+  disableDefaultUI: true,
+  zoomControl: true
 }
 
-export default React.memo(MyComponent)
+export default function Shops() {
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    libraries
+  });
+
+  if (loadError) return "Error loading maps";
+  if (!isLoaded) return "Loading Maps";
+  
+  return (
+    <div>
+      <GoogleMap 
+        mapContainerStyle={mapContainerStyle} 
+        zoom={15} 
+        center={center}
+        options={options}
+      ></GoogleMap>
+    </div>
+  )
+}
+
+// export default { React.memo(MyComponent), Shops }
+ 
