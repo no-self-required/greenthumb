@@ -1,5 +1,6 @@
 import { createContext, useState } from 'react';
 import uuid from 'react-uuid';
+import axios from 'axios';
 
 export const authContext = createContext();
 
@@ -9,9 +10,18 @@ export default function AuthProvider(props) {
 
   // Perform login process for the user & save authID, etc
   const login = function (email, password) {
-    setAuth(true);
     const id = uuid();  // Some random userId
-    setUser({ email, id, name: "Test User" });
+    console.log('LOGIN!');
+    
+    // Seding post request to the server
+    axios.post('api/users', {
+      email,
+      password
+    })
+    .then(function (res) {
+      setUser(res.data);
+      setAuth(true);
+    })
   };
 
   const logout = function (email, password) {

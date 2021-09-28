@@ -1,8 +1,7 @@
 INSERT INTO
 users(username, email, password, city, twitter, facebook)
 VALUES
-    ('Mario', 'mario@nintendo.com', 'test', 'toronto', '@handle', '@handle',),
-    ('Some', 'mario@nintendo.com', 'test', 'ott', '@handle', '@handle'),
-    ('Other', 'mario@nintendo.com', 'test', 'bc', '@handle', '@handle'),
-    ('Abc', 'mario@nintendo.com', 'test', 'toronto', '@handle', '@handle'),
-    ('Mario', 'mario@nintendo.com', 'test', 'calgary', '@handle', '@handle');
+    ('Mario', 'mario@nintendo.com', 'test', 'toronto', '@handle', '@123',),
+    ('Some', 'some@nintendo.com', '123', 'ott', '@dds', '@handle'),
+    ('Other', 'Other@nintendo.com', 'test1', 'bc', '@handle', '@handle'),
+    ('Abc', 'Abc@nintendo.com', 'test2', 'toronto', '@handle', '@handle')

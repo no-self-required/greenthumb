@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { authContext } from '../Providers/AuthProvider';
@@ -18,6 +19,9 @@ function Login() {
   };
 
   const onSubmit = function(event) {
+    console.log('onSubmit');
+    console.log('EMAIL----',email);
+    console.log('PASSWORD----',password);
     event.preventDefault();
     if (email)
       login(email, password);
