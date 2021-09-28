@@ -1,14 +1,25 @@
-import React from 'react'
-import './Home.scss'
+import React, { useState }from 'react';
+import './Home.scss';
+import { useHistory } from 'react-router-dom'
+import SearchBox from './searchbox';
 
-function Home() {
+const Home = () => {
+
+  // const [search, setSearch] = useState({
+  //   searchField:''
+  // })
+  
+  const history = useHistory();
   return (
     <div className='main'>
       <h1>Greenthumb</h1>
-      <input type="search" placeholder="Search a product..."/>
-      <button>Eco-fy</button>
+        <SearchBox />
+        {/* <input type="search" placeholder="Search a product..."/> */}
+        <button type="submit" onClick={() => history.push('/products')}>Eco-fy</button>
     </div>
   )
 }
 
 export default Home
+
+//<input type="search" className='search' placeholder="Search a product..."/>
