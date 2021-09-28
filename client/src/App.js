@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { authContext } from './components/Providers/AuthProvider';
-import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
+import { BrowserRouter as Router,Switch,Route } from "react-router-dom";
 import useApplicationData from './useApplicationData';
 import Home from './components/Home/Home';
 import Register from './components/Register/Register';
