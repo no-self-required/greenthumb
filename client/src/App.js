@@ -11,6 +11,7 @@ import Register from './components/Register/Register';
 import Products from './components/Products/Products';
 import Navbar from './components/Navbar';
 import Login from './components/Login/Login';
+import Shops from './components/Shops/Shops';
 const App = () => {
   const {
       state,
@@ -19,7 +20,8 @@ const App = () => {
     const userList = state.users.map((user) => (<li key={user.id} > {user.first_name} {user.last_name} {user.email} </li>
 ));
 
-return (<div className="App" >
+return (
+  <div className="App" >
     <Router>
       <div>
         <Navbar />
@@ -41,6 +43,9 @@ return (<div className="App" >
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
+          <Route path="/shops">
+            <Shops />
+          </Route>
           <Route path="/register">
             <Register />
           </Route>
@@ -56,7 +61,7 @@ return (<div className="App" >
         </Switch>
       </div>
     </Router>
-  </div >
+  </div>
   );
 };
 

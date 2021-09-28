@@ -1,40 +1,71 @@
-import React from 'react'
+import React, {setState} from 'react'
 
 function Register() {
   return (
-  <div class="user">
+  <div className="user">
       <h1>Register</h1>
-      <form class="form">
-          <div class="form__group">
-              <input type="text" placeholder="Username" class="form__input" />
+      <form className="form">
+          <div className="form__group">
+              <input 
+                type="text" 
+                id="username"
+                placeholder="Username*" 
+                className="form__input"
+                required
+                autoFocus
+              />
           </div>
 
-          <div class="form__group">
-              <input type="email" placeholder="Email" class="form__input" />
+          <div className="form__group">
+              <input 
+                type="email" 
+                id="email"
+                placeholder="Email*" 
+                className="form__input" 
+                required  
+              />
+          </div>
+
+          <div className="form__group">
+              <input 
+                type="password"
+                id="password"
+                placeholder="Password*" 
+                className="form__input" 
+                required
+                />
+          </div>
+
+          <div className="form__group">
+              <input 
+                type="password" 
+                id="password_confirm"
+                placeholder="Confirm Password*" 
+                className="form__input"
+                required
+              />
           </div>
           
-          <div class="form__group">
-              <input type="city" placeholder="City" class="form__input" />
+          <div className="form__group">
+              <input type="city" placeholder="City" className="form__input" />
           </div>
 
-          <div class="form__group">
-              <input type="twitter" placeholder="Twitter" class="form__input" />
+          <div className="form__group">
+              <input type="twitter" placeholder="Twitter" className="form__input" />
           </div>
 
-          <div class="form__group">
-              <input type="facebook" placeholder="Facebook" class="form__input" />
+          <div className="form__group">
+              <input type="facebook" placeholder="Facebook" className="form__input" />
           </div>
 
-          <div class="form__group">
-              <input type="password" placeholder="Password" class="form__input" />
-          </div>
           
-          <button class="btn" type="button">Register</button>
+          
+          <button className="btn" value="register" type="submit">Register</button>
       </form>
   </div>
   )
 }
 
-export default Register
+export default Register;
 
 

@@ -1,10 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import './Navbar.scss'
 
-function Navbar() {
+function Navbar(props) {
   return (
     <div className='nav'>
-      <button>Login/Signup</button>
+      <Link to="/login">Login/Signup</Link>
+      Hello
     </div>
   )
 }
