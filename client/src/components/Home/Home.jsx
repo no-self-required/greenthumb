@@ -17,7 +17,7 @@ const Home = ({onClick}) => {
           placeholder="Search a product"
           name="search"
         />
-        <button onClick={(e) => console.log(document.getElementById("search").value)}>Eco-fy</button>
+        <button onClick={e => onClick(document.getElementById('search').value)}>Eco-fy</button>
     </div>
   )
 }

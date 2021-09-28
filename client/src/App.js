@@ -11,7 +11,7 @@ import Login from "./components/Login/Login";
 
 const axios = require("axios");
 
-const App = (props) => {
+const App = () => {
   const { state, dispatch } = useApplicationData();
   const userList = state.users.map((user) => (
     <li key={user.id}>
@@ -23,11 +23,8 @@ const App = (props) => {
   const [searchVal, setSearchVal] = useState("");
 
   const handleSearch = (input) => {
-    console.log("INPUT:", input)
     setSearchVal(input);
   };
-
-  <Home onClick={handleSearch} />;
 
   // // set up the request parameters
   // const params = {
@@ -83,7 +80,7 @@ const App = (props) => {
               <Products />
             </Route>
             <Route path="/">
-              <Home />
+              <Home onClick={handleSearch}/>
             </Route>
           </Switch>
         </div>
