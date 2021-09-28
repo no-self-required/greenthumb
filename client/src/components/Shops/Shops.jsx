@@ -1,5 +1,5 @@
 import React from 'react'
-import { GoogleMap, useJsApiLoader, useLoadScript } from '@react-google-maps/api';
+import { GoogleMap, Marker, useJsApiLoader, useLoadScript } from '@react-google-maps/api';
 
 import Search from './Search';
 
@@ -22,6 +22,8 @@ export default function Shops() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries
   });
+
+  const [markers, setMarkers] = React.useState([]);
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -46,8 +48,19 @@ export default function Shops() {
         zoom={15} 
         center={center}
         options={options}
+        onClick={(event) => {setMarkers(current => 
+        [...current, {
+          lat: event.latLng.lat(),
+          lng: event.latLng.lng(),
+          time: new Date()
+          }
+        ])
+        }}
         onLoad={onMapLoad}
-      ></GoogleMap>
+      >
+        {markers.map(marker => (
+          <Marker key={marker.time.toISOString()} position={{lat: marker.lat, lng: marker.lng}} />))}
+      </GoogleMap>
     </div>
   )
 }
