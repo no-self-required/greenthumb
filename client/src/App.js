@@ -19,54 +19,56 @@ const App = () => {
     const userList = state.users.map((user) => (<li key={user.id} > {user.first_name} {user.last_name} {user.email} </li>
   ));
 
-  const { auth,user } = useContext(authContext);
-    console.log('USER!!!----', user);
-return (
-  <div className="App" >
-    <Router>
-      <div>
-        <Navbar 
-          auth={auth}
-          user={user}
-        />
+  //login
+  const { auth,user,logout } = useContext(authContext);
+  
+  return (
+    <div className="App" >
+      <Router>
+        <div>
+          <Navbar 
+            auth={auth}
+            user={user}
+            logout={logout}
+          />
 
-        {/* <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/register">Register</Link>
-            </li>
-            <li>
-              <Link to="/products">Products</Link>
-            </li>
-          </ul>
-        </nav> */}
+          {/* <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/register">Register</Link>
+              </li>
+              <li>
+                <Link to="/products">Products</Link>
+              </li>
+            </ul>
+          </nav> */}
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/shops">
-            <Shops />
-          </Route>
-          <Route path="/register">
-            <Register />
-          </Route>
-          <Route path="/login">
-            {!auth && <Login />}
-            {auth && <Home />}
-          </Route>
-          <Route path="/products">
-            <Products />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-  </div>
+          {/* A <Switch> looks through its children <Route>s and
+              renders the first one that matches the current URL. */}
+          <Switch>
+            <Route path="/shops">
+              <Shops />
+            </Route>
+            <Route path="/register">
+              <Register />
+            </Route>
+            <Route path="/login">
+              {!auth && <Login />}
+              {auth && <Home />}
+            </Route>
+            <Route path="/products">
+              <Products />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </div>
   );
 };
 

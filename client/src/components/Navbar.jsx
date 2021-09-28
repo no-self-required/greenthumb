@@ -6,14 +6,14 @@ function Navbar(props) {
   if(!props.auth) {
     return (
       <div className='nav'>
-        <Link to="/login">Login/Signup</Link>
+        <button><Link to="/login">Login/Signup</Link></button>
       </div>
     )
   } else {
     return (
       <div className='nav'>
-        {props.user.username}
-        <Link to="/login">Logout</Link>
+        Hello, {props.user.username}
+        <button onClick={props.logout}><Link to="/login">Logout</Link></button>
       </div>
     )
   }
