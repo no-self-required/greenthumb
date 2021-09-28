@@ -1,5 +1,7 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { GoogleMap, useJsApiLoader, useLoadScript } from '@react-google-maps/api';
+
+import Search from './Search';
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -21,20 +23,31 @@ export default function Shops() {
     libraries
   });
 
+  const mapRef = React.useRef();
+  const onMapLoad = React.useCallback((map) => {
+    mapRef.current = map;
+  }, []);
+
+  const panTo = React.useCallback(({lat, lng}) => {
+    mapRef.current.panTo({lat, lng});
+    mapRef.current.setZoom(15);
+  }, [])
+
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
   
   return (
     <div>
+
+      <Search panTo={panTo}/>
+
       <GoogleMap 
         mapContainerStyle={mapContainerStyle} 
         zoom={15} 
         center={center}
         options={options}
+        onLoad={onMapLoad}
       ></GoogleMap>
     </div>
   )
 }
-
-// export default { React.memo(MyComponent), Shops }
- 
