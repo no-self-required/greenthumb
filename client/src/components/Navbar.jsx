@@ -15,9 +15,10 @@ function Navbar(props) {
   } else {
     return (
       <div className='nav'>
-          <Link to="/shops">Local Shops</Link>
-          Hello, {props.user.username}
-          <button onClick={props.logout}>Logout</button>
+        <Link to="/idea">Idea</Link>
+        <Link to="/shops">Local Shops</Link>
+        Hello, {props.user.username}
+        <button onClick={props.logout}>Logout</button>
       </div>
     )
   }

@@ -19,9 +19,6 @@ function Login() {
   };
 
   const onSubmit = function(event) {
-    console.log('onSubmit');
-    console.log('EMAIL----',email);
-    console.log('PASSWORD----',password);
     event.preventDefault();
     if (email)
       login(email, password);

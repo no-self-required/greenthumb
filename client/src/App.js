@@ -8,6 +8,7 @@ import Products from './components/Products/Products';
 import Navbar from './components/Navbar';
 import Login from './components/Login/Login';
 import Shops from './components/Shops/Shops';
+import Idea from './components/Post/Post';
 import './App.scss';
 
 
@@ -49,6 +50,9 @@ const App = () => {
           {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
           <Switch>
+            <Route path="/blog">
+              <Blog />
+            </Route>
             <Route path="/shops">
               <Shops />
             </Route>
