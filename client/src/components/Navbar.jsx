@@ -23,7 +23,7 @@ const style = {
 
 const regStyle = {
   position: "absolute",
-  top: "40%",
+  top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 350,
@@ -83,7 +83,7 @@ function Navbar() {
             <h1>Login</h1>
             <form class="form">
               <div id="un">
-                <TextField id="outlined" label="Username" fullWidth />
+                <TextField id="outlined" label="Username" fullWidth color="white"/>
               </div>
               <div id="pw">
                 <TextField
@@ -92,6 +92,7 @@ function Navbar() {
                   type="password"
                   autoComplete="current-password"
                   fullWidth
+                  color="white"
                 />
               </div>
               <Button variant="contained" fullWidth>
@@ -112,23 +113,23 @@ function Navbar() {
             <h1>Register</h1>
             <form class="form">
               <div id="un">
-                <TextField id="outlined" label="Username" fullWidth />
+                <TextField id="outlined" label="Username" fullWidth color="white"/>
               </div>
 
               <div id="em">
-                <TextField id="email" label="Email" fullWidth/>
+                <TextField id="email" label="Email" fullWidth color="white"/>
               </div>
 
               <div id="city">
-                <TextField id="email" label="City" fullWidth/>
+                <TextField id="email" label="City" fullWidth color="white"/>
               </div>
 
               <div id="twt">
-                <TextField id="twitter" label="Twitter" fullWidth/>
+                <TextField id="twitter" label="Twitter" fullWidth color="white"/>
               </div>
 
               <div id="fb">
-                <TextField id="facebook" label="Facebook" fullWidth/>
+                <TextField id="facebook" label="Facebook" fullWidth color="white"/>
               </div>
 
               <div id="regpw">
@@ -137,6 +138,7 @@ function Navbar() {
                   type="password"
                   autoComplete="current-password"
                   fullWidth
+                  color="white"
                 />
               </div>
 

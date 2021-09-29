@@ -22,11 +22,11 @@ const theme = createMuiTheme({
     secondary: {
       main: '#1b5e20',
     },
-    success: {
-      main: '#ffffff',
-    },
     lightgreen: {
       main: '#64c264'
+    },
+    white: {
+      main: '#ffffff'
     }
   },
 })

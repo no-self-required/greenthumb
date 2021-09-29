@@ -18,7 +18,7 @@ const Home = ({ onClick }) => {
         label="Search a product"
         variant="outlined"
         id="search"
-        color="success"
+        color="white"
       />
 
       <Button
