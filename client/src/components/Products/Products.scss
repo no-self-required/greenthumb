@@ -1,0 +1,9 @@
+.product_page {
+  width: 100%;
+
+  .products {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+}

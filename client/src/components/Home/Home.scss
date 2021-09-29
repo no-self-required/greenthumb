@@ -9,28 +9,4 @@
     font-size: 60px;
     margin-bottom: 15px;
   }
-
-  input {
-    border: none;
-    background-color: lightgray;
-    height: 65px;
-    width: 50%;
-    font-size: 24px;
-
-    &:focus {
-      outline: none;
-    }
-
-    &::placeholder{
-      color: black;
-    }
-  }
-
-  button {
-    margin-top: 10px;
-    border: none;
-    background-color: lightgray;
-    padding: 10px;
-    font-size: 24px;
-  }
 }
