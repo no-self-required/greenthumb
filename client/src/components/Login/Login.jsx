@@ -1,6 +1,7 @@
 import React from 'react'
 import "./Login.scss"
 
+
 function Login() {
   return (
   <div class="user">
@@ -21,3 +22,4 @@ function Login() {
 }
 
 export default Login
+

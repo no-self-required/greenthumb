@@ -3,6 +3,8 @@ import useApplicationData from "./useApplicationData";
 import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
+import { createMuiTheme, ThemeProvider } from "@mui/material";
+
 import Home from "./components/Home/Home";
 import Register from "./components/Register/Register";
 import Products from "./components/Products/Products";
@@ -10,6 +12,24 @@ import Navbar from "./components/Navbar";
 import Login from "./components/Login/Login";
 
 const axios = require("axios");
+
+const theme = createMuiTheme({
+  palette: {
+    type: 'light',
+    primary: {
+      main: '#43a047',
+    },
+    secondary: {
+      main: '#1b5e20',
+    },
+    success: {
+      main: '#ffffff',
+    },
+    lightgreen: {
+      main: '#64c264'
+    }
+  },
+})
 
 const App = () => {
   const { state, dispatch } = useApplicationData();
@@ -28,10 +48,10 @@ const App = () => {
 
   // // set up the request parameters
   // const params = {
-  //   api_key: "7A17E1E16821475095E29C0A7A5F9190",
+  //   api_key: "",
   //   type: "search",
   //   amazon_domain: "amazon.com",
-  //   search_term: "eco-friendly",
+  //   search_term: {searchVal},
   //   category_id: "15342811"
   // }
 
@@ -48,6 +68,7 @@ const App = () => {
   //   })
 
   return (
+    <ThemeProvider theme={theme}>
     <div className="App">
       <Router>
         <div>
@@ -86,6 +107,7 @@ const App = () => {
         </div>
       </Router>
     </div>
+    </ThemeProvider>
   );
 };
 
