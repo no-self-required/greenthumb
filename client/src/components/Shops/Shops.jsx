@@ -42,8 +42,8 @@ export default function Shops() {
     <div>
 
       <Search panTo={panTo}/>
-
-      <GoogleMap 
+      
+      {/* <GoogleMap 
         mapContainerStyle={mapContainerStyle} 
         zoom={15} 
         center={center}
@@ -60,7 +60,7 @@ export default function Shops() {
       >
         {markers.map(marker => (
           <Marker key={marker.time.toISOString()} position={{lat: marker.lat, lng: marker.lng}} />))}
-      </GoogleMap>
+      </GoogleMap> */}
     </div>
   )
 }

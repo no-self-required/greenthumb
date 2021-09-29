@@ -30,28 +30,34 @@ export default function Search(props) {
     }
   });
   return (
-    <Combobox 
-      onSelect={async (address) => {
-        try {
-          const results = await getGeocode({address});
-          const {lat, lng} = await getLatLng(results[0]);
-          props.panTo({lat, lng});
-        } catch(error) {
-          console.log(error)
-        }
-      }}>
-      <ComboboxInput 
-        value={value} 
-        onChange={e => setValue(e.target.value)}
-        disabled={!ready}
-        placeholder="Enter an address"
-      />
-      <ComboboxPopover>
-        {status === 'OK' && 
-          data.map(({id, description}) => (
-            <ComboboxOption key={id} value={description} />
-        ))}
-      </ComboboxPopover>
-    </Combobox>
+    <div className="container">
+      <Combobox 
+        onSelect={async (address) => {
+          try {
+            const results = await getGeocode({address});
+            const {lat, lng} = await getLatLng(results[0]);
+            props.panTo({lat, lng});
+          } catch(error) {
+            console.log(error)
+          }
+        }}>
+        <ComboboxInput 
+          value={value} 
+          onChange={e => setValue(e.target.value)}
+          disabled={!ready}
+          placeholder="Enter an address"
+        />
+        <ComboboxPopover>
+          {status === 'OK' && 
+            data.map(({id, description}) => (
+              <ComboboxOption key={id} value={description} />
+          ))}
+        </ComboboxPopover>
+      </Combobox>
+
+      <div className="box">
+        <h1>Map will be here</h1>
+      </div>
+    </div>
   )
 }
