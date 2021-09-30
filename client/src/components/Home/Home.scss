@@ -14,25 +14,4 @@
   }
 }
 
-#ecofy {
-  margin-top: 1em;
-  margin-right: 2em;
-  color: white;
-  padding: 4px;
-  cursor: pointer;
-  font-size: 15px;
-}
-#ecofy:hover {
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.726);
-  transition: box-shadow 0.3s ease-in-out;
-}
 
-.textfield {
-  width: 50%;
-}
-
-.textfield:hover {
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.726);
-  transition: box-shadow 0.3s ease-in-out;
-  border-radius: 16px;
-}

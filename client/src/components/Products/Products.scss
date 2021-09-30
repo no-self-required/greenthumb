@@ -3,15 +3,18 @@
   display: flex;
 
   .column1 {
-    width: 85%;
+    width: 100%;
 
     .layout {
       display: flex;
+      margin-left: 10em;
   
       .products {
         display: flex;
         flex-wrap: wrap;
-        width: 1300px;
+        justify-content: space-between;
+        height: auto;
+        width: 80%;
       }
     } 
   }
@@ -19,4 +22,9 @@
   .column2 {
     width: 15%;
   }  
+
+}
+
+.singProduct {
+  margin-bottom: 2em;
 }

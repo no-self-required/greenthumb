@@ -1,13 +1,7 @@
 .single_product {
-  width: 30%;
 
   .product {
-    display: flex;
-    flex-direction: column;
-    height: 400px;
-    font-size: 16px;
-    margin: 40px 30px;
-    overflow-y: auto;
+    height: 28em;
     background-color: rgb(255, 255, 255);
 
     img {
@@ -36,21 +30,16 @@
 
     .buttons {
       display: flex;
-      margin-top: 30px;
       justify-content: space-between;
 
       .left {
-        display: flex;
-        align-items: center;
-        background-color: rgb(50, 135, 233);
-        padding: 0 5px;
         margin-left: 5px;
-        cursor: pointer;
+
 
         a {
-          border: none;
+
           text-decoration: none;
-          color: white;
+          color: rgb(62, 224, 143);
         }
       }
 
