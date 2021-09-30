@@ -13,30 +13,6 @@
     margin-bottom: 15px;
   }
 
-  // input {
-  //   border: none;
-  //   background-color: lightgray;
-  //   height: 65px;
-  //   width: 50%;
-  //   font-size: 24px;
-
-  //   &:focus {
-  //     outline: none;
-  //   }
-
-  //   &::placeholder{
-  //     color: black;
-  //   }
-  // }
-
-  // button {
-  //   margin-top: 10px;
-  //   border: none;
-  //   background-color: lightgray;
-  //   padding: 10px;
-  //   font-size: 24px;
-  // }
-
   #ecofy {
     margin-top: 1em;
     margin-right: 2em;
@@ -46,9 +22,10 @@
     font-size: 15px;
   }
   #ecofy:hover {
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.726);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.726);
     transition: box-shadow 0.3s ease-in-out;
   }
+
 }
 
 .textfield{
@@ -58,4 +35,5 @@
 .textfield:hover {
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.726);
   transition: box-shadow 0.3s ease-in-out;
+  border-radius: 16px;
 }

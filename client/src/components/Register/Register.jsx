@@ -1,40 +1,55 @@
-import React from 'react'
+import React from "react";
+import "./Register.scss";
+import { TextField, Button } from "@mui/material";
 
 function Register() {
   return (
-  <div class="user">
-      <h1>Register</h1>
-      <form class="form">
-          <div class="form__group">
-              <input type="text" placeholder="Username" class="form__input" />
-          </div>
+    <div className="reguser">
+      <h1 id="h1reg">Register</h1>
+      <form className="regform">
+        <div id="un">
+          <TextField
+            required
+            id="outlined"
+            label="Username"
+            fullWidth
+            color="white"
+          />
+        </div>
 
-          <div class="form__group">
-              <input type="email" placeholder="Email" class="form__input" />
-          </div>
-          
-          <div class="form__group">
-              <input type="city" placeholder="City" class="form__input" />
-          </div>
+        <div id="em">
+          <TextField required id="email" label="Email" fullWidth color="white" />
+        </div>
 
-          <div class="form__group">
-              <input type="twitter" placeholder="Twitter" class="form__input" />
-          </div>
+        <div id="city">
+          <TextField id="email" label="City" fullWidth color="white" />
+        </div>
 
-          <div class="form__group">
-              <input type="facebook" placeholder="Facebook" class="form__input" />
-          </div>
+        <div id="twt">
+          <TextField id="twitter" label="Twitter" fullWidth color="white" />
+        </div>
 
-          <div class="form__group">
-              <input type="password" placeholder="Password" class="form__input" />
-          </div>
-          
-          <button class="btn" type="button">Register</button>
+        <div id="fb">
+          <TextField id="facebook" label="Facebook" fullWidth color="white" />
+        </div>
+
+        <div id="regpw">
+          <TextField
+            required
+            label="Password"
+            type="password"
+            autoComplete="current-password"
+            fullWidth
+            color="white"
+          />
+        </div>
+
+        <Button variant="contained" fullWidth>
+          Register
+        </Button>
       </form>
-  </div>
-  )
+    </div>
+  );
 }
 
-export default Register
-
-
+export default Register;

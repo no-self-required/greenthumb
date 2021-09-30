@@ -29,6 +29,9 @@ const theme = createMuiTheme({
       main: '#ffffff'
     }
   },
+  shape: {
+    borderRadius: 15,
+  }, 
 })
 
 const App = () => {
