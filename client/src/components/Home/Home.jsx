@@ -1,15 +1,13 @@
-import React, { useState }from 'react';
 import './Home.scss';
 import { useHistory } from 'react-router-dom'
 import axios from 'axios';
 import Searchbox from '../Searchbox';
-// import SearchBox from './searchbox';
+import Navbar from '../Navbar';
 
 const Home = () => {
   const history = useHistory();
 
   const handleSearch = (input) => {
-    console.log(input)
     const params = {
       method: 'GET',
       url: 'https://amazon24.p.rapidapi.com/api/product',
@@ -35,9 +33,12 @@ const Home = () => {
   };
 
   return (
-    <div className='main'>
-      <h1>Greenthumb</h1>     
-        <Searchbox onClick={e => handleSearch(document.getElementById('search').value)} rowButton={false}/>
+    <div className='home'>
+      <Navbar />
+      <div className="main">
+        <h1>Greenthumb</h1>     
+        <Searchbox onClick={handleSearch} rowButton={false}/>
+      </div> 
     </div>
   )
 }

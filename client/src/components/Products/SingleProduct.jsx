@@ -1,7 +1,7 @@
 import React from 'react'
 import './SingleProduct.scss'
 
-function SingleProduct({name, price, rating, img}) {
+function SingleProduct({name, price, rating, img, details}) {
   return (
     <div className='single_product'>
       <div className="product">
@@ -13,7 +13,7 @@ function SingleProduct({name, price, rating, img}) {
         </div>
         <div className="buttons">
           <div className="left">
-            <button>See detail</button>
+            <a href={details} >See Details</a>
           </div>
         <div className="right">
           <button>Save</button>

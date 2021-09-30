@@ -1,9 +1,22 @@
 .product_page {
   width: 100%;
+  display: flex;
 
-  .products {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+  .column1 {
+    width: 85%;
+
+    .layout {
+      display: flex;
+  
+      .products {
+        display: flex;
+        flex-wrap: wrap;
+        width: 1300px;
+      }
+    } 
   }
+
+  .column2 {
+    width: 15%;
+  }  
 }
