@@ -2,14 +2,19 @@ import React from "react";
 import "./Login.scss";
 import { TextField, Button } from "@mui/material";
 
-
 function Login() {
   return (
     <div className="user">
       <h1 id="h1login">Login</h1>
       <form className="loginform">
         <div id="un">
-          <TextField id="outlined" className="unshadow"label="Username" fullWidth color="white" />
+          <TextField
+            id="outlined"
+            className="unshadow"
+            label="Username"
+            fullWidth
+            color="white"
+          />
         </div>
         <div id="pw">
           <TextField
@@ -22,9 +27,11 @@ function Login() {
             color="white"
           />
         </div>
-        <Button variant="contained" fullWidth>
-          Login
-        </Button>
+        <div id="logbutton">
+          <Button variant="contained" fullWidth>
+            Login
+          </Button>
+        </div>
       </form>
     </div>
   );

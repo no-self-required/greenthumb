@@ -1,0 +1,22 @@
+.product_page {
+  width: 100%;
+  display: flex;
+
+  .column1 {
+    width: 85%;
+
+    .layout {
+      display: flex;
+  
+      .products {
+        display: flex;
+        flex-wrap: wrap;
+        width: 1300px;
+      }
+    } 
+  }
+
+  .column2 {
+    width: 15%;
+  }  
+}

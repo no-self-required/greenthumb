@@ -1,0 +1,38 @@
+.opened {
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: lightgray;
+
+  button {
+    margin-top: 1.5em;
+    margin-left: 5px;
+    padding: 5px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+  }
+}
+
+.closed {
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+
+  button {
+    margin-top: 1.5em;
+    margin-right: 25px;
+    align-self: flex-end;
+    padding: 5px;
+    background-color: lightgray;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+  }
+}
