@@ -5,9 +5,9 @@ import { TextField, Button } from "@mui/material";
 
 function Login() {
   return (
-    <div class="user">
+    <div className="user">
       <h1 id="h1login">Login</h1>
-      <form class="loginform">
+      <form className="loginform">
         <div id="un">
           <TextField id="outlined" className="unshadow"label="Username" fullWidth color="white" />
         </div>
