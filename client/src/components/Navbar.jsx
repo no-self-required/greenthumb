@@ -15,7 +15,7 @@ function Navbar(props) {
   } else {
     return (
       <div className='nav'>
-        <Link to="/idea">Idea</Link>
+        <Link to="/blog">Idea</Link>
         <Link to="/shops">Local Shops</Link>
         Hello, {props.user.username}
         <button onClick={props.logout}>Logout</button>

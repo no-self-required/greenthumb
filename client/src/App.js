@@ -8,7 +8,9 @@ import Products from './components/Products/Products';
 import Navbar from './components/Navbar';
 import Login from './components/Login/Login';
 import Shops from './components/Shops/Shops';
-import Idea from './components/Post/Post';
+import Blog from './components/Blog/Blog';
+import Create from './components/Blog/SinglePost/Create';
+import SinglePost from './components/Blog/SinglePost/SinglePost';
 import './App.scss';
 
 
@@ -52,6 +54,12 @@ const App = () => {
           <Switch>
             <Route path="/blog">
               <Blog />
+            </Route>
+            <Route path="/singlepage">
+              <SinglePost />
+            </Route>
+            <Route path="/create">
+              <Create />
             </Route>
             <Route path="/shops">
               <Shops />
