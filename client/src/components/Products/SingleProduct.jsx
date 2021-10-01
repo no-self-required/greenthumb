@@ -8,19 +8,27 @@ import { CardContent } from "@mui/material";
 
 function SingleProduct({ name, price, rating, img, details }) {
   return (
-    <Card sx={{ maxWidth: 345}}>
+    <Card sx={{ maxWidth: 330 }}>
       <div className="single_product">
         <div className="product">
-          <CardMedia>
-            <img src={img} alt="" />
-          </CardMedia>
-          <CardContent>
-            <Typography variant="body2">{`***** ${rating}`}</Typography>
-            <div className="info">
-              <Typography variant="body2">{name}</Typography>
-              <Typography variant="body2">{price}</Typography>
-            </div>
-          </CardContent>
+          <div id="prodimg">
+            <CardMedia>
+              <img src={img} alt="" />
+            </CardMedia>
+          </div>
+          <div id="rating">
+            <CardContent>
+              <Typography variant="body2">{`***** ${rating}`}</Typography>
+            </CardContent>
+          </div>
+          <div id="cardcontent">
+            <CardContent>
+              <div className="info">
+                <Typography variant="body2">{name}</Typography>
+                <Typography variant="body2">{price}</Typography>
+              </div>
+            </CardContent>
+          </div>
           <CardActions>
             <div className="buttons">
               <div className="left">
