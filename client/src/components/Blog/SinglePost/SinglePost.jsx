@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import "./SinglePost.scss";
 
-export default function SinglePost() {
+export default function SinglePost(props) {
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
@@ -11,7 +11,7 @@ export default function SinglePost() {
           alt=""
         />
         <h1 className="singlePostTitle">
-          Lorem ipsum dolor
+          {props.title}
           <div className="singlePostEdit">
             <i className="singlePostIcon far fa-edit"></i>
             <i className="singlePostIcon far fa-trash-alt"></i>
@@ -29,11 +29,7 @@ export default function SinglePost() {
           <span>1 day ago</span>
         </div>
         <p className="singlePostDesc">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste errorquibusdam ipsa quis quidem doloribus eos, dolore ea iusto impedit!Voluptatum necessitatibus eum beatae, adipisci voluptas a odit modi
-          <br />
-          <br />
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste errorquibusdam ipsa quis quidem doloribus eos, dolore ea iusto impedit!Voluptatum necessitatibus eum beatae, adipisci voluptas a odit modieos! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Isteerror quibusdam ipsa quis quidem doloribus eos, dolore ea iusto
-          impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas aodit modi eos! Lorem, ipsum dolor sit amet consectetur adipisicing
+          {props.body}
           
         </p>
       </div>

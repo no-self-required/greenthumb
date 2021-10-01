@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { authContext } from './components/Providers/AuthProvider';
 import { BrowserRouter as Router,Switch,Route } from "react-router-dom";
 import useApplicationData from './useApplicationData';
@@ -12,6 +12,7 @@ import Blog from './components/Blog/Blog';
 import Create from './components/Blog/SinglePost/Create';
 import SinglePost from './components/Blog/SinglePost/SinglePost';
 import './App.scss';
+import axios from 'axios';
 
 
 const App = () => {
@@ -22,8 +23,13 @@ const App = () => {
     const userList = state.users.map((user) => (<li key={user.id} > {user.first_name} {user.last_name} {user.email} </li>
   ));
 
+  const [posts, setPosts] = useState([]);
+
   //login
   const { auth,user,logout } = useContext(authContext);
+
+ 
+  
   
   return (
     <div className="App" >
@@ -53,13 +59,17 @@ const App = () => {
               renders the first one that matches the current URL. */}
           <Switch>
             <Route path="/blog">
-              <Blog />
+              <Blog 
+                posts={posts}
+              />
             </Route>
             <Route path="/singlepage">
               <SinglePost />
             </Route>
             <Route path="/create">
-              <Create />
+              <Create 
+                user={user}
+              />
             </Route>
             <Route path="/shops">
               <Shops />

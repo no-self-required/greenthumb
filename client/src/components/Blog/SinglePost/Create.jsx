@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
-import uuid from 'react-uuid';
+import { Link } from 'react-router-dom';
 import "./Create.scss";
 
-export default function Create() {
+export default function Create(props) {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
 
@@ -26,9 +26,10 @@ export default function Create() {
 
   const addPost = function(title, body) {
     let likes = 0;
+    const user = props.user;
 
     axios.post('api/post', {
-      title, body, likes
+      title, body, likes, user
     })
     .then(function (res) {
       setPost(res.data)
@@ -64,7 +65,7 @@ export default function Create() {
           />
         </div>
         <button className="writeSubmit" type="submit">
-          Publish
+          <Link to="/blog">Publish</Link>
         </button>
       </form>
     </div>
