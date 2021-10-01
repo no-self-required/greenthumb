@@ -25,17 +25,18 @@ export default function Create() {
   }
 
   const addPost = function(title, body) {
-    const id = uuid();
+    let likes = 0;
 
     axios.post('api/post', {
-      title, body, id
+      title, body, likes
     })
     .then(function (res) {
-      // setPost(res.data)
-      console.log(res);
+      setPost(res.data)
+      console.log('RES.DATA-------', res.data);
     })
   }
 
+  // console.log('POST-------', post);
   return (
     <div className="write">
       <form className="writeForm" onSubmit={onSubmit}>
