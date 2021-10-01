@@ -1,3 +1,4 @@
+const { response } = require('express');
 var express = require('express');
 // const { default: Post } = require('../../client/src/components/Blog/Post');
 var router = express.Router();
@@ -19,10 +20,22 @@ router.post('/', async (req, res) => {
   newPost(post);
 });
 
-router.get('/', async(req, res)=> {
-  const query = `SELECT * FROM posts;`
+router.get('/', async (req, res)=> {
+  console.log('OUTSIDE');
+  const query = `
+  SELECT *
+  FROM posts;
+  `
   client.query(query)
-  .then(result => console.log(result))
+  .then(({ rows: posts }) => {
+    console.log('INSIDE');
+    res.json(posts)
+  })
+});
+
+router.get('/:postId', async (req, res) => {
+  const postId = req.params.postId;
+  console.log('POST ID------',postId);
 })
 
 module.exports = router;
