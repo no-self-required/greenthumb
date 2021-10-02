@@ -7,18 +7,17 @@ import {
 } from "react-router-dom";
 
 import { createMuiTheme, ThemeProvider } from "@mui/material";
-
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { authContext } from "./components/Providers/AuthProvider";
-
 import useApplicationData from "./useApplicationData";
-
 import Home from "./components/Home/Home";
 import Register from "./components/Register/Register";
 import Products from "./components/Products/Products";
 import Login from "./components/Login/Login";
-import Navbar from "./components/Navbar";
 import Shops from "./components/Shops/Shops";
+import Blog from './components/Blog/Blog';
+import Create from './components/Blog/SinglePost/Create';
+import SinglePost from './components/Blog/SinglePost/SinglePost';
 
 const theme = createMuiTheme({
   palette: {
@@ -50,6 +49,8 @@ const App = () => {
     </li>
   ));
 
+  const [posts, setPosts] = useState([]);
+
   //login
   const { auth, user, logout } = useContext(authContext);
 
@@ -58,6 +59,19 @@ const App = () => {
       <Router>
         <div className="App">
           <Switch>
+            <Route path="/blog">
+              <Blog 
+                posts={posts}
+              />
+            </Route>
+            <Route path="/singlepage">
+              <SinglePost />
+            </Route>
+            <Route path="/create">
+              <Create 
+                user={user}
+              />
+            </Route>
             <Route path="/shops">
               <Shops />
             </Route>

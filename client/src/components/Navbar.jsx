@@ -120,7 +120,7 @@ function Navbar(props) {
             </Button>
             <Button
               variant="outline"
-              onClick={() => history.push("/ideas")}
+              onClick={() => history.push("/blog")}
               id="ideas"
               sx={{ width: "5em" }}
             >
