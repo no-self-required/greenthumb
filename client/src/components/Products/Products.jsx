@@ -6,8 +6,20 @@ import Searchbox from "../Searchbox";
 import "./Products.scss";
 import Sidebar from "./Sidebar";
 import SingleProduct from "./SingleProduct";
+import { useContext } from 'react';
+import { authContext } from "../Providers/AuthProvider";
 
+import useApplicationData from "../../useApplicationData";
 function Products() {
+  const {
+    state,
+    dispatch
+} = useApplicationData();
+  const userList = state.users.map((user) => (<li key={user.id} > {user.first_name} {user.last_name} {user.email} </li>
+));
+
+//login
+const { auth,user,logout } = useContext(authContext);
   const location = useLocation();
   const productsArray = location.state.props.slice(0, 9);
 
@@ -59,7 +71,11 @@ function Products() {
   return (
     <div className="product_page">
       <div className="column1">
-        <Navbar />
+      <Navbar 
+            auth={auth}
+            user={user}
+            logout={logout}
+          />
         <Searchbox rowButton={true} onClick={handleSearch} />
         <div className="layout">
           <div className="products">{products}</div>

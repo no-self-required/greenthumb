@@ -30,32 +30,53 @@ module.exports = ({
             }));
     });
 
+    // router.post('/', (req, res) => {
+
+    //     const {
+    //         first_name,
+    //         last_name,
+    //         email,
+    //         password
+    //     } = req.body;
+
+    //     getUserByEmail(email)
+    //         .then(user => {
+
+    //             if (user) {
+    //                 res.json({
+    //                     msg: 'Sorry, a user account with this email already exists'
+    //                 });
+    //             } else {
+    //                 return addUser(first_name, last_name, email, password)
+    //             }
+
+    //         })
+    //         .then(newUser => res.json(newUser))
+    //         .catch(err => res.json({
+    //             error: err.message
+    //         }));
+
+    // })
+    
     router.post('/', (req, res) => {
-
-        const {
-            first_name,
-            last_name,
-            email,
-            password
-        } = req.body;
-
-        getUserByEmail(email)
-            .then(user => {
-
-                if (user) {
-                    res.json({
-                        msg: 'Sorry, a user account with this email already exists'
-                    });
-                } else {
-                    return addUser(first_name, last_name, email, password)
-                }
-
+      const {email, password} = req.body;
+      getUserByEmail(email)
+      .then(user => {
+        if(user) {
+          if (user.password === password) {
+            res.json(user)
+          } else {
+            res.json({
+              error: "Incorrect Password"
             })
-            .then(newUser => res.json(newUser))
-            .catch(err => res.json({
-                error: err.message
-            }));
-
+          }
+        } else {
+          res.json({
+            error: "User doesn't exist"
+          })
+        }
+      })
+      .catch(err => res.json({ error: err.message }));
     })
 
     return router;

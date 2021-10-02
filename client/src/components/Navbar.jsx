@@ -38,7 +38,7 @@ const regStyle = {
   boxShadow: "0px 0px 15px 1px rgb(249, 249, 249)",
 };
 
-function Navbar() {
+function Navbar(props) {
   const history = useHistory();
 
   const [open, setOpen] = React.useState(false);
@@ -50,59 +50,106 @@ function Navbar() {
 
   const handleOpen2 = () => setOpen2(true);
   const handleClose2 = () => setOpen2(false);
-
-  return (
-    <nav>
-      <div className="nav">
-        <Stack direction="row-reverse">
-          <Button
-            variant="contained"
-            onClick={handleOpen2}
-            sx={{ width: "5em" }}
-          >
-            Signup
-          </Button>
-          <Button
-            variant="outlined"
-            disableElevation
-            onClick={handleOpen}
-            color="white"
-            sx={{ width: "5em" }}
-          >
-            Login
-          </Button>
-          <Button
-            variant="outline"
-            onClick={() => history.push("/ideas")}
-            id="ideas"
-            sx={{ width: "5em" }}
-          >
-            ideas
-          </Button>
-        </Stack>
-      </div>
-      <Modal open={open}>
-        <Box sx={style} className="loginbox">
-          <div id="closeIcon">
-            <IconButton color="white" onClick={handleClose}>
-              <CloseIcon />
-            </IconButton>
-          </div>
-          <Login></Login>
-        </Box>
-      </Modal>
-      <Modal open={open2}>
-        <Box sx={regStyle} className="regbox">
-          <div id="closeIcon">
-            <IconButton color="white" onClick={handleClose2}>
-              <CloseIcon />
-            </IconButton>
-          </div>
-          <Register></Register>
-        </Box>
-      </Modal>
-    </nav>
-  );
+  if (!props.auth) {
+    return (
+      <nav>
+        <div className="nav">
+          <Stack direction="row-reverse">
+            <Button
+              variant="contained"
+              onClick={handleOpen2}
+              sx={{ width: "5em" }}
+            >
+              Signup
+            </Button>
+            <Button
+              variant="outlined"
+              disableElevation
+              onClick={handleOpen}
+              color="white"
+              sx={{ width: "5em" }}
+            >
+              Login
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => history.push("/ideas")}
+              id="ideas"
+              sx={{ width: "5em" }}
+            >
+              ideas
+            </Button>
+          </Stack>
+        </div>
+        <Modal open={open}>
+          <Box sx={style} className="loginbox">
+            <div id="closeIcon">
+              <IconButton color="white" onClick={handleClose}>
+                <CloseIcon />
+              </IconButton>
+            </div>
+            <Login></Login>
+          </Box>
+        </Modal>
+        <Modal open={open2}>
+          <Box sx={regStyle} className="regbox">
+            <div id="closeIcon">
+              <IconButton color="white" onClick={handleClose2}>
+                <CloseIcon />
+              </IconButton>
+            </div>
+            <Register></Register>
+          </Box>
+        </Modal>
+      </nav>
+    );
+  } else {
+    return (
+      <nav>
+        <div className="nav">
+          <Stack direction="row-reverse">
+            <Button
+              variant="contained"
+              onClick={handleOpen2}
+              sx={{ width: "5em" }}
+            >
+              Signup
+            </Button>
+            <Button variant="contained" onClick={props.logout}>
+              Logout
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => history.push("/ideas")}
+              id="ideas"
+              sx={{ width: "5em" }}
+            >
+              ideas
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => history.push("/shops")}
+              id="ideas"
+              sx={{ width: "5em" }}
+            >
+              shops
+            </Button>
+            Hello, {props.user.username}
+          </Stack>
+        </div>
+        <Modal open={open2}>
+          <Box sx={regStyle} className="regbox">
+            <div id="closeIcon">
+              <IconButton color="white" onClick={handleClose2}>
+                <CloseIcon />
+              </IconButton>
+            </div>
+            <Register></Register>
+          </Box>
+        </Modal>
+      </nav>
+    );
+  }
 }
 
 export default Navbar;
