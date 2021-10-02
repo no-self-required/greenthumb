@@ -58,6 +58,9 @@ const App = () => {
       <Router>
         <div className="App">
           <Switch>
+            <Route path="/shops">
+              <Shops />
+            </Route>
             <Route path="/register">
               <Register />
             </Route>
@@ -70,9 +73,6 @@ const App = () => {
             </Route>
             <Route path="/">
               <Home />
-            </Route>
-            <Route path="/shops">
-              <Shops />
             </Route>
           </Switch>
         </div>
