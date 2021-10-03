@@ -9,7 +9,7 @@ import { Modal, Box, IconButton } from "@mui/material";
 import Login from "./Login/Login";
 import Register from "./Register/Register";
 import CloseIcon from "@mui/icons-material/Close";
-
+import { Typography } from "@mui/material";
 //Styling override for login modal popup
 const style = {
   position: "absolute",
@@ -71,14 +71,6 @@ function Navbar(props) {
             >
               Login
             </Button>
-            <Button
-              variant="outline"
-              onClick={() => history.push("/ideas")}
-              id="ideas"
-              sx={{ width: "5em" }}
-            >
-              ideas
-            </Button>
           </Stack>
         </div>
         <Modal open={open}>
@@ -108,16 +100,12 @@ function Navbar(props) {
       <nav>
         <div className="nav">
           <Stack direction="row-reverse">
-            <Button
-              variant="contained"
-              onClick={handleOpen2}
-              sx={{ width: "5em" }}
-            >
-              Signup
-            </Button>
             <Button variant="contained" onClick={props.logout}>
               Logout
             </Button>
+            <div id="unNav">
+              <Typography>Hello, {props.user.username}</Typography>
+            </div>
             <Button
               variant="outline"
               onClick={() => history.push("/blog")}
@@ -134,7 +122,6 @@ function Navbar(props) {
             >
               shops
             </Button>
-            Hello, {props.user.username}
           </Stack>
         </div>
         <Modal open={open2}>

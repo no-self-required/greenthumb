@@ -29,7 +29,7 @@ body {
     margin-top: 0.7em;
     margin-right: 1em;
 
-    padding: 4px;
+    padding: 5px;
     cursor: pointer;
     font-size: 15px;
   }
@@ -40,6 +40,10 @@ body {
 
 }
 
+#unNav {
+  margin-top: 1.2em;
+  margin-right: 1.2em;
+}
 #closeIcon {
   display: flex;
   flex-direction: row-reverse;
