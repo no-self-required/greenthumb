@@ -122,6 +122,15 @@ function Navbar(props) {
             >
               shops
             </Button>
+            <div id="homeButton">
+            <Button
+              variant="outline"
+              onClick={() => history.push("/")}
+              id="ideas"
+            >
+              G
+            </Button>
+            </div>
           </Stack>
         </div>
         <Modal open={open2}>
