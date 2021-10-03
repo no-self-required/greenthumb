@@ -2,9 +2,8 @@ import React, {useState} from 'react'
 import './Home.scss'
 const axios = require('axios');
 
-function Home() {
+function Home(props) {
   const [keyword, setKeyword] = useState('')
-
   return (
     <div className='main'>
       <h1>Greenthumb</h1>

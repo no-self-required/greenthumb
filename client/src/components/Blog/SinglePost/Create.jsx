@@ -1,13 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import "./Create.scss";
 
 export default function Create(props) {
+  let history = useHistory();
+
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
-
-  const [post, setPost] = useState({ title: '', body: '', id: ''});
 
   const onTitleChange = function (event) {
     setTitle(event.target.value);
@@ -28,12 +28,11 @@ export default function Create(props) {
     let likes = 0;
     const user = props.user;
 
-    axios.post('api/post', {
+    axios.post('/api/post', {
       title, body, likes, user
     })
     .then(function (res) {
-      setPost(res.data)
-      console.log('RES.DATA-------', res.data);
+      history.push('/blog');
     })
   }
 
@@ -65,7 +64,7 @@ export default function Create(props) {
           />
         </div>
         <button className="writeSubmit" type="submit">
-          <Link to="/blog">Publish</Link>
+          Publish
         </button>
       </form>
     </div>

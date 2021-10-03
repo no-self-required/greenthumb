@@ -11,6 +11,7 @@ import Shops from './components/Shops/Shops';
 import Blog from './components/Blog/Blog';
 import Create from './components/Blog/SinglePost/Create';
 import SinglePost from './components/Blog/SinglePost/SinglePost';
+import Post from './components/Blog/Post';
 import './App.scss';
 import axios from 'axios';
 
@@ -24,13 +25,13 @@ const App = () => {
   ));
 
   const [posts, setPosts] = useState([]);
+  // const {post} = Post();
 
   //login
   const { auth,user,logout } = useContext(authContext);
 
  
-  
-  
+
   return (
     <div className="App" >
       <Router>
@@ -58,12 +59,13 @@ const App = () => {
           {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
           <Switch>
-            <Route path="/blog">
+            <Route path="/blog" exact>
               <Blog 
+                user={user}
                 posts={posts}
               />
             </Route>
-            <Route path="/singlepage">
+            <Route path="/:id">
               <SinglePost />
             </Route>
             <Route path="/create">
