@@ -10,6 +10,7 @@ import Login from "./Login/Login";
 import Register from "./Register/Register";
 import CloseIcon from "@mui/icons-material/Close";
 import { Typography } from "@mui/material";
+
 //Styling override for login modal popup
 const style = {
   position: "absolute",
@@ -123,13 +124,13 @@ function Navbar(props) {
               shops
             </Button>
             <div id="homeButton">
-            <Button
-              variant="outline"
-              onClick={() => history.push("/")}
-              id="ideas"
-            >
-              G
-            </Button>
+              <Button
+                variant="outline"
+                onClick={() => history.push("/")}
+                id="ideas"
+              >
+                G
+              </Button>
             </div>
           </Stack>
         </div>

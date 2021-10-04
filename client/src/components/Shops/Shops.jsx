@@ -1,26 +1,46 @@
-import React from 'react'
-import { GoogleMap, Marker, useJsApiLoader, useLoadScript } from '@react-google-maps/api';
+import React from "react";
+import {
+  GoogleMap,
+  Marker,
+  useJsApiLoader,
+  useLoadScript,
+} from "@react-google-maps/api";
 
-import Search from './Search';
+import Search from "./Search";
+import Navbar from "../Navbar";
+import useApplicationData from "../../useApplicationData";
+import { useContext } from "react";
+import { authContext } from "../Providers/AuthProvider";
 
 const libraries = ["places"];
 const mapContainerStyle = {
-  width: '100vw',
-  height: '80vh'
-}
+  width: "100vw",
+  height: "80vh",
+};
 const center = {
   lat: 43.6532,
-  lng: -79.3832
-}
+  lng: -79.3832,
+};
 const options = {
   disableDefaultUI: true,
-  zoomControl: true
-}
+  zoomControl: true,
+};
 
 export default function Shops() {
+  const { state, dispatch } = useApplicationData();
+  const userList = state.users.map((user) => (
+    <li key={user.id}>
+      {" "}
+      {user.first_name} {user.last_name} {user.email}{" "}
+    </li>
+  ));
+
+  //login
+  const { auth, user, logout } = useContext(authContext);
+
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-    libraries
+    libraries,
   });
 
   const [markers, setMarkers] = React.useState([]);
@@ -30,37 +50,43 @@ export default function Shops() {
     mapRef.current = map;
   }, []);
 
-  const panTo = React.useCallback(({lat, lng}) => {
-    mapRef.current.panTo({lat, lng});
+  const panTo = React.useCallback(({ lat, lng }) => {
+    mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(15);
-  }, [])
+  }, []);
 
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
-  
+
   return (
     <div>
+      <Navbar auth={auth} user={user} logout={logout} />
+      <Search panTo={panTo} />
 
-      <Search panTo={panTo}/>
-      
-      {/* <GoogleMap 
-        mapContainerStyle={mapContainerStyle} 
-        zoom={15} 
+      <GoogleMap
+        mapContainerStyle={mapContainerStyle}
+        zoom={15}
         center={center}
         options={options}
-        onClick={(event) => {setMarkers(current => 
-        [...current, {
-          lat: event.latLng.lat(),
-          lng: event.latLng.lng(),
-          time: new Date()
-          }
-        ])
+        onClick={(event) => {
+          setMarkers((current) => [
+            ...current,
+            {
+              lat: event.latLng.lat(),
+              lng: event.latLng.lng(),
+              time: new Date(),
+            },
+          ]);
         }}
         onLoad={onMapLoad}
       >
-        {markers.map(marker => (
-          <Marker key={marker.time.toISOString()} position={{lat: marker.lat, lng: marker.lng}} />))}
-      </GoogleMap> */}
+        {markers.map((marker) => (
+          <Marker
+            key={marker.time.toISOString()}
+            position={{ lat: marker.lat, lng: marker.lng }}
+          />
+        ))}
+      </GoogleMap>
     </div>
-  )
+  );
 }

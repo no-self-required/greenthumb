@@ -7,12 +7,16 @@ import axios from "axios";
 import Searchbox from "../Searchbox";
 import Navbar from "../Navbar";
 
-import { useContext } from 'react';
+import { CircularProgress } from "@mui/material";
+
+import { useContext } from "react";
 import useApplicationData from "../../useApplicationData";
 import { authContext } from "../Providers/AuthProvider";
 
 const Home = () => {
+  const [loading, setLoading] = useState(false);
 
+  //login
   const { state, dispatch } = useApplicationData();
   const userList = state.users.map((user) => (
     <li key={user.id}>
@@ -20,12 +24,12 @@ const Home = () => {
       {user.first_name} {user.last_name} {user.email}{" "}
     </li>
   ));
-
-  //login
   const { auth, user, logout } = useContext(authContext);
+
   const history = useHistory();
 
   const handleSearch = (input) => {
+    setLoading(true);
     const params = {
       method: "GET",
       url: "https://amazon24.p.rapidapi.com/api/product",
@@ -47,6 +51,7 @@ const Home = () => {
       .request(params)
       .then(function (response) {
         history.push("/products", { props: response.data.docs });
+        setLoading(false);
       })
       .catch(function (error) {
         console.error(error);
@@ -59,6 +64,13 @@ const Home = () => {
       <div className="main">
         <h1>Greenthumb</h1>
         <Searchbox onClick={handleSearch} rowButton={false} />
+
+        
+        {loading === true && (
+          <div id="loading">
+            <CircularProgress color="success" />
+          </div>
+        )}
       </div>
     </div>
   );

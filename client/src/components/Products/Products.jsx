@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { useHistory, useLocation } from "react-router";
 import Navbar from "../Navbar";
 import Searchbox from "../Searchbox";
@@ -8,9 +8,14 @@ import Sidebar from "./Sidebar";
 import SingleProduct from "./SingleProduct";
 import { useContext } from "react";
 import { authContext } from "../Providers/AuthProvider";
-
+import { CircularProgress } from "@mui/material";
 import useApplicationData from "../../useApplicationData";
+
 function Products() {
+  //loading icon logic
+  const [loading, setLoading] = useState(false);
+
+  //login
   const { state, dispatch } = useApplicationData();
   const userList = state.users.map((user) => (
     <li key={user.id}>
@@ -18,15 +23,15 @@ function Products() {
       {user.first_name} {user.last_name} {user.email}{" "}
     </li>
   ));
-
-  //login
   const { auth, user, logout } = useContext(authContext);
+
   const location = useLocation();
   const productsArray = location.state.props.slice(0, 9);
 
   const history = useHistory();
 
   const handleSearch = (input) => {
+    setLoading(true);
     const params = {
       method: "GET",
       url: "https://amazon24.p.rapidapi.com/api/product",
@@ -48,6 +53,7 @@ function Products() {
       .request(params)
       .then(function (response) {
         history.push("/products", { props: response.data.docs });
+        setLoading(false);
       })
       .catch(function (error) {
         console.error(error);
@@ -75,7 +81,13 @@ function Products() {
         <Navbar auth={auth} user={user} logout={logout} />
         <div id="prodSearchbox">
           <Searchbox rowButton={true} onClick={handleSearch} />
-        </div>        
+          {loading === true && (
+            <div id="prodLoading">
+              <CircularProgress color="success" />
+            </div>
+          )}
+        </div>
+
         <div className="layout">
           <div className="products">{products}</div>
         </div>
