@@ -63,9 +63,7 @@ const Home = () => {
       <Navbar auth={auth} user={user} logout={logout} />
       <div className="main">
         <h1>Greenthumb</h1>
-        <Searchbox onClick={handleSearch} rowButton={false} />
-
-        
+        <Searchbox onClick={handleSearch} rowButton={false} />       
         {loading === true && (
           <div id="loading">
             <CircularProgress color="success" />

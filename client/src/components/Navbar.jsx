@@ -101,7 +101,11 @@ function Navbar(props) {
       <nav>
         <div className="nav">
           <Stack direction="row-reverse">
-            <Button variant="contained" onClick={props.logout}>
+            <Button 
+              variant="contained" 
+              onClick={props.logout}
+              sx={{ width: "5em", fontWeight: "medium"}}
+              >
               Logout
             </Button>
             <div id="unNav">
@@ -111,27 +115,26 @@ function Navbar(props) {
               variant="outline"
               onClick={() => history.push("/blog")}
               id="ideas"
-              sx={{ width: "5em" }}
+              sx={{ width: "5em", fontWeight: "medium"}}
             >
               ideas
             </Button>
             <Button
               variant="outline"
               onClick={() => history.push("/shops")}
-              id="ideas"
-              sx={{ width: "5em" }}
+              id="shops"
+              sx={{ width: "5em", fontWeight: "medium"}}
             >
               shops
             </Button>
-            <div id="homeButton">
-              <Button
-                variant="outline"
-                onClick={() => history.push("/")}
-                id="ideas"
-              >
-                G
-              </Button>
-            </div>
+            <Button
+              variant="outline"
+              onClick={() => history.push("/")}
+              id="homeButton"
+              sx={{ width: "5em", fontWeight: "medium"}}
+            >
+              home
+            </Button>
           </Stack>
         </div>
         <Modal open={open2}>

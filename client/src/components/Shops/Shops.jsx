@@ -13,10 +13,15 @@ import { useContext } from "react";
 import { authContext } from "../Providers/AuthProvider";
 
 const libraries = ["places"];
+
 const mapContainerStyle = {
-  width: "100vw",
+  width: "90vw",
   height: "80vh",
+  marginLeft: "6.5em",
+  marginTop: "3em",
+  border: "1px solid white"
 };
+
 const center = {
   lat: 43.6532,
   lng: -79.3832,
@@ -63,30 +68,31 @@ export default function Shops() {
       <Navbar auth={auth} user={user} logout={logout} />
       <Search panTo={panTo} />
 
-      <GoogleMap
-        mapContainerStyle={mapContainerStyle}
-        zoom={15}
-        center={center}
-        options={options}
-        onClick={(event) => {
-          setMarkers((current) => [
-            ...current,
-            {
-              lat: event.latLng.lat(),
-              lng: event.latLng.lng(),
-              time: new Date(),
-            },
-          ]);
-        }}
-        onLoad={onMapLoad}
-      >
-        {markers.map((marker) => (
-          <Marker
-            key={marker.time.toISOString()}
-            position={{ lat: marker.lat, lng: marker.lng }}
-          />
-        ))}
-      </GoogleMap>
+        <GoogleMap
+          mapContainerStyle={mapContainerStyle}
+          zoom={15}
+          center={center}
+          options={options}
+          onClick={(event) => {
+            setMarkers((current) => [
+              ...current,
+              {
+                lat: event.latLng.lat(),
+                lng: event.latLng.lng(),
+                time: new Date(),
+              },
+            ]);
+          }}
+          onLoad={onMapLoad}
+        >
+          {markers.map((marker) => (
+            <Marker
+              key={marker.time.toISOString()}
+              position={{ lat: marker.lat, lng: marker.lng }}
+            />
+          ))}
+        </GoogleMap>
+
     </div>
   );
 }

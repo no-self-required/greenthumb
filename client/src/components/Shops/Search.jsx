@@ -13,6 +13,9 @@ import {
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 
+import { TextField } from "@mui/material";
+import "./Search.scss";
+
 export default function Search(props) {
   const {
     ready, 
@@ -41,12 +44,17 @@ export default function Search(props) {
             console.log(error)
           }
         }}>
-        <ComboboxInput 
-          value={value} 
-          onChange={e => setValue(e.target.value)}
-          disabled={!ready}
-          placeholder="Enter an address"
-        />
+        <div id="textAddress">
+          <TextField 
+            variant="outlined"
+            color="white"
+            value={value} 
+            onChange={e => setValue(e.target.value)}
+            disabled={!ready}
+            placeholder="Enter an address"
+            // sx={{height: "1em"}}
+          />
+        </div>
         <ComboboxPopover>
           {status === 'OK' && 
             data.map(({id, description}) => (
@@ -54,10 +62,6 @@ export default function Search(props) {
           ))}
         </ComboboxPopover>
       </Combobox>
-
-      <div className="box">
-        <h1>Map will be here</h1>
-      </div>
     </div>
   )
 }
