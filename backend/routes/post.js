@@ -47,13 +47,15 @@ router.get('/:id', async (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
-  const postId = req.params.postId;
+  const id = req.params.id;
 
-  const query = `DROP DATABASE [IF EXISTS] ${postId}`
+  const query = `
+  DELETE FROM posts 
+  WHERE id=${id}`
 
   client.query(query)
-  .then(({ rows: posts}) => {
-    res.json(posts)
+  .then(({ rows: post }) => {
+    res.json(post[0])
   })
 });
 
