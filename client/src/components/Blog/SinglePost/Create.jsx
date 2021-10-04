@@ -25,11 +25,10 @@ export default function Create(props) {
   }
 
   const addPost = function(title, body) {
-    let likes = 0;
     const user = props.user;
 
     axios.post('/api/post', {
-      title, body, likes, user
+      title, body, user
     })
     .then(function (res) {
       history.push('/blog');

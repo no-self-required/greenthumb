@@ -14,6 +14,7 @@ import SinglePost from './components/Blog/SinglePost/SinglePost';
 import Post from './components/Blog/Post';
 import './App.scss';
 import axios from 'axios';
+import StateProvider from './components/Providers/StateProvider';
 
 
 const App = () => {
@@ -66,7 +67,9 @@ const App = () => {
               />
             </Route>
             <Route path="/:id">
-              <SinglePost />
+              <StateProvider>
+                <SinglePost />
+              </StateProvider>
             </Route>
             <Route path="/create">
               <Create 

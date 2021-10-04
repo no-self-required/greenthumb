@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, {useState,useEffect} from 'react'
+import React, {useState,useEffect,useContext} from 'react'
 import { Link,useHistory } from 'react-router-dom';
 import SinglePost from './SinglePost/SinglePost';
 
@@ -15,23 +15,15 @@ function Post(props) {
     })
   }, [])
     
-  // const loadSingle = () => {
-  //   return (
-  //     <SinglePost post={post}/>
-  //   )
-  // } 
-  
   return (
     <div>
       <Link to={`/${post.id}`}> 
-      {/* <Link to='/'> */}
 
         <h2>{props.title}</h2>
         <p>{props.date}</p>
       </Link>
-        <p>{props.likes}</p>
+        <p><i class="fas fa-thumbs-up"></i>{props.likes}</p>
 
-        {/* {post} */}
     </div>
   )
 }
