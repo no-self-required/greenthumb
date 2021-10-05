@@ -12,8 +12,9 @@ import { CircularProgress } from "@mui/material";
 import useApplicationData from "../../useApplicationData";
 
 function Products() {
-  //loading icon logic
-  const [loading, setLoading] = useState(false);
+  //Saved products
+  const [savedProducts, setSavedProducts] = useState([]);  //saved products
+  const [loading, setLoading] = useState(false); //loading icon
 
   //login
   const { state, dispatch } = useApplicationData();
@@ -29,6 +30,13 @@ function Products() {
   const productsArray = location.state.props.slice(0, 9);
 
   const history = useHistory();
+
+  //Handle save button when its clicked
+  const handleSave = (obj) => {
+    let newArr = savedProducts;
+    newArr.push(obj);
+    setSavedProducts(newArr);
+  }
 
   const handleSearch = (input) => {
     setLoading(true);
@@ -47,17 +55,17 @@ function Products() {
         "x-rapidapi-host": "amazon24.p.rapidapi.com",
         "x-rapidapi-key": "3cc3b85d09msh2e9a0df57326101p185615jsn2402a0cb5536",
       },
-    };
+  };
 
-    axios
-      .request(params)
-      .then(function (response) {
-        history.push("/products", { props: response.data.docs });
-        setLoading(false);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+  axios
+    .request(params)
+    .then(function (response) {
+      history.push("/products", { props: response.data.docs });
+      setLoading(false);
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
   };
 
   const products = productsArray.map((i, index) => {
@@ -70,6 +78,7 @@ function Products() {
           rating={i.evaluate_rate}
           img={i.product_main_image_url}
           details={i.product_detail_url}
+          clickSave={handleSave}
         />
       </div>
     );
@@ -89,11 +98,13 @@ function Products() {
         </div>
 
         <div className="layout">
-          <div className="products">{products}</div>
+          <div className="products">
+            {products}
+          </div>
         </div>
       </div>
       <div className="column2">
-        <Sidebar />
+        <Sidebar savedProducts={savedProducts}/>
       </div>
     </div>
   );

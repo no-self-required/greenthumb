@@ -6,7 +6,8 @@ import { Card } from "@mui/material";
 import { CardMedia } from "@mui/material";
 import { CardContent } from "@mui/material";
 
-function SingleProduct({ name, price, rating, img, details }) {
+function SingleProduct({ name, price, rating, img, details, clickSave }) {
+  
   return (
     <Card sx={{ maxWidth: 330 }}>
       <div className="single_product">
@@ -37,7 +38,7 @@ function SingleProduct({ name, price, rating, img, details }) {
                 </Button>
               </div>
               <div className="right">
-                <Button variant="outlined">Save</Button>
+                <Button variant="outlined" onClick={() => clickSave({name, price, rating, img, details})}>Save</Button>
                 <Button variant="outlined">Share</Button>
               </div>
             </div>

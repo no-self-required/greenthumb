@@ -3,8 +3,15 @@ import { Button } from "@mui/material";
 
 import './Sidebar.scss'
 
-function Sidebar() {
+function Sidebar({savedProducts}) {
   const [isToggled, setIsToggled] = useState(false);      //This is to tell if the sideBar is toggled or not
+
+  const list = savedProducts.map(product => (
+    <div className='product'>
+      <img src={product.img}></img>
+      <p>{product.name}</p>
+    </div>)
+  ) 
 
   const handleClick = () => {
     (isToggled ? setIsToggled(false) : setIsToggled(true))
@@ -15,8 +22,9 @@ function Sidebar() {
       ? 
       <div className='opened'>
         <div className="head">
-          <Button id='button' variant='contained' onClick={handleClick}> {' CLOSE >>'}</Button>  
-        </div>     
+          <Button id='button' variant='contained' onClick={handleClick}> {' CLOSE >>'}</Button>
+        </div>
+        {list}     
       </div> 
       : 
       <div className='closed'>
