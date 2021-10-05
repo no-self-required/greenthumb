@@ -59,7 +59,7 @@ const Home = () => {
   };
 
   return (
-    <div className="home">
+    <div className="home" id="bodyH">
       <Navbar auth={auth} user={user} logout={logout} />
       <div className="main">
         <h1>Greenthumb</h1>

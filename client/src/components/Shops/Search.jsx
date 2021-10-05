@@ -46,13 +46,13 @@ export default function Search(props) {
         }}>
         <div id="textAddress">
           <TextField 
+            id="mapsText"
             variant="outlined"
             color="white"
             value={value} 
             onChange={e => setValue(e.target.value)}
             disabled={!ready}
             placeholder="Enter an address"
-            // sx={{height: "1em"}}
           />
         </div>
         <ComboboxPopover>

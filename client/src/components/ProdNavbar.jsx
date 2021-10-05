@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import "./Navbar.scss";
+import "./ProdNavbar.scss";
 
 import Button from "@mui/material/Button";
 import { Stack } from "@mui/material";
@@ -39,7 +39,7 @@ const regStyle = {
   boxShadow: "0px 0px 15px 1px rgb(249, 249, 249)",
 };
 
-function Navbar(props) {
+function ProdNavbar(props) {
   const history = useHistory();
 
   const [open, setOpen] = React.useState(false);
@@ -130,7 +130,7 @@ function Navbar(props) {
               <Button
                 variant="outline"
                 onClick={() => history.push("/")}
-                id="homeButton"
+                id="prodHomeButton"
                 sx={{ width: "5em", fontWeight: "medium" }}
               >
                 home
@@ -152,4 +152,4 @@ function Navbar(props) {
   }
 }
 
-export default Navbar;
+export default ProdNavbar;

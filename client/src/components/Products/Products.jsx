@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useHistory, useLocation } from "react-router";
-import Navbar from "../Navbar";
+import ProdNavbar from "../ProdNavbar";
 import Searchbox from "../Searchbox";
 import "./Products.scss";
 import Sidebar from "./Sidebar";
@@ -78,7 +78,7 @@ function Products() {
   return (
     <div className="product_page">
       <div className="column1">
-        <Navbar auth={auth} user={user} logout={logout} />
+        <ProdNavbar auth={auth} user={user} logout={logout} />
         <div id="prodSearchbox">
           <Searchbox rowButton={true} onClick={handleSearch} />
           {loading === true && (

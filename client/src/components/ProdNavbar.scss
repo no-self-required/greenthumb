@@ -1,0 +1,69 @@
+$font-family: "Roboto";
+$font-size: 14px;
+
+$color-primary: #aba194;
+
+body {
+  font-family: $font-family;
+  font-size: $font-size;
+  background-size: 200% 100% !important;
+  animation: move 8s ease infinite;
+  transform: translate3d(0, 0, 0);
+  background: linear-gradient(45deg, #68b36b 1%, #43a047 99%);
+  height: 100vh;
+}
+
+.nav {
+  text-align: right;
+  margin-top: 0;
+
+  height: 4em;
+  background-color: #64c264;
+  color: white;
+  width: 100%;
+  height: 4em;
+
+
+  button {
+    margin-top: 0.7em;
+    margin-right: 1em;
+
+    padding: 5px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  button:hover {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.726);
+    transition: box-shadow 0.2s ease-in-out;
+  }
+
+
+}
+
+#unNav {
+  margin-top: 1.2em;
+  margin-right: 1.2em;
+}
+#closeIcon {
+  display: flex;
+  flex-direction: row-reverse;
+  color: white;
+  margin-right: 1em;
+  margin-top: 1em;
+}
+
+#shops, #ideas, #homeButton {
+  font-weight: 0;
+}
+#prodHomeButton {
+  left: -79em;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
