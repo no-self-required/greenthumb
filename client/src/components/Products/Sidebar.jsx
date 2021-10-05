@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { Button } from "@mui/material";
+
 import './Sidebar.scss'
 
 function Sidebar() {
@@ -11,13 +13,16 @@ function Sidebar() {
   return (
     (isToggled 
       ? 
-      <div className='opened'>      
-        <button onClick={handleClick}> {' CLOSE >>'}</button>
-        
+      <div className='opened'>
+        <div className="head">
+          <Button id='button' variant='contained' onClick={handleClick}> {' CLOSE >>'}</Button>  
+        </div>     
       </div> 
       : 
       <div className='closed'>
-        <button onClick={handleClick}> {'<< SAVED '}</button>
+        <div className="head">
+          <Button id='button' variant='contained' onClick={handleClick}> {'<< SAVED '}</Button>
+        </div>
       </div>)
   )
 }

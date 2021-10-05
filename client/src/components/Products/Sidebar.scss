@@ -3,17 +3,20 @@
   top: 0;
   bottom: 0;
   right: 0;
-  background-color: lightgray;
-
-  button {
-    margin-top: 1.5em;
-    margin-left: 5px;
-    padding: 5px;
-    background-color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 25px;
-  }
+  background-color: #64c264;
+  
+  .head {
+    height: 4em;
+    background-color: #64c264;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    
+    #button {
+      margin-right: 10px;
+      height: 25px;
+    }
+  }  
 }
 
 .closed {
@@ -21,18 +24,23 @@
   top: 0;
   bottom: 0;
   right: 0;
-  background-color: white;
+  animation: move 8s ease infinite;
+  transform: translate3d(0, 0, 0);
+  background:#43a047;
   display: flex;
   flex-direction: column;
 
-  button {
-    margin-top: 1.5em;
-    margin-right: 25px;
-    align-self: flex-end;
-    padding: 5px;
-    background-color: lightgray;
-    border: none;
-    cursor: pointer;
-    border-radius: 25px;
-  }
+  .head {
+    height: 4em;
+    display: flex;
+    background-color: #64c264;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+    #button {
+      margin-right: 10px;
+      height: 25px;
+    }
+  } 
 }
