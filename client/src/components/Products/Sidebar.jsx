@@ -1,16 +1,25 @@
 import React, { useState } from 'react'
-import { Button } from "@mui/material";
-
+import { Button, Typography } from "@mui/material";
+import { Card, CardMedia } from '@mui/material';
 import './Sidebar.scss'
 
 function Sidebar({savedProducts}) {
   const [isToggled, setIsToggled] = useState(false);      //This is to tell if the sideBar is toggled or not
 
   const list = savedProducts.map(product => (
-    <div className='product'>
-      <img src={product.img}></img>
-      <p>{product.name}</p>
-    </div>)
+    <div id="sideCard">
+    <Card sx={{ maxWidth: 225, maxHeight: 210 }}>
+      <div className='sideProduct'>
+        <CardMedia>
+          <img id="sideimg" src={product.img}></img>
+        </CardMedia>
+        <div className="sideInfo">
+        <Typography sx={{ fontSize: "10px" }}>{product.name}</Typography>
+        </div>
+      </div>
+    </Card>
+    </div>
+    )
   ) 
 
   const handleClick = () => {
@@ -36,3 +45,4 @@ function Sidebar({savedProducts}) {
 }
 
 export default Sidebar
+

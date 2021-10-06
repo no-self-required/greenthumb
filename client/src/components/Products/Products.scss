@@ -8,7 +8,7 @@
   background:  #43a047;
   height: 100%;
   .column1 {
-    width: 100%;
+    max-width: 116.4em;
 
     #prodSearchbox {
       display: flex;
@@ -33,7 +33,7 @@
   }
 
   .column2 {
-    width: 15%;
+    width: 20em;
   }  
 
 }

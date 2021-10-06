@@ -19,7 +19,7 @@ function SingleProduct({ name, price, rating, img, details, clickSave }) {
           </div>
           <div id="rating">
             <CardContent>
-              <Typography variant="body2">{`***** ${rating}`}</Typography>
+              <Typography variant="body2">{`${rating}`}</Typography>
             </CardContent>
           </div>
           <div id="cardcontent">
