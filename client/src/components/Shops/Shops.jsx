@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { GoogleMap, Marker, useJsApiLoader, useLoadScript } from '@react-google-maps/api';
 
 import Search from './Search';
+import axios from 'axios';
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -22,8 +23,15 @@ export default function Shops() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries
   });
-
+  
   const [markers, setMarkers] = React.useState([]);
+  
+  useEffect(() => {
+    axios.get(`/shops`)
+      .then((res) => {
+        setMarkers(res.data)
+      })
+  }, [])
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -43,24 +51,31 @@ export default function Shops() {
 
       <Search panTo={panTo}/>
       
-      {/* <GoogleMap 
+      <GoogleMap 
         mapContainerStyle={mapContainerStyle} 
         zoom={15} 
         center={center}
         options={options}
-        onClick={(event) => {setMarkers(current => 
-        [...current, {
-          lat: event.latLng.lat(),
-          lng: event.latLng.lng(),
-          time: new Date()
-          }
-        ])
+        onClick={(event) => {
+          console.log('EVENT---', typeof event.latLng.lat())
+          axios.post('/shops', {
+            lat: event.latLng.lat().toString(),
+            lng: event.latLng.lng().toString()
+          })
+          .then(function(res) { 
+            setMarkers(current => 
+          [...current, {
+            lat: event.latLng.lat(),
+            lng: event.latLng.lng()
+            }
+          ])
+          })
         }}
         onLoad={onMapLoad}
       >
-        {markers.map(marker => (
-          <Marker key={marker.time.toISOString()} position={{lat: marker.lat, lng: marker.lng}} />))}
-      </GoogleMap> */}
+        {markers.map((marker, index) => (
+          <Marker key={index} position={{lat: Number(marker.lat), lng: Number(marker.lng)}} />))}
+      </GoogleMap>
     </div>
   )
 }

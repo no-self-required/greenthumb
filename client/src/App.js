@@ -65,25 +65,25 @@ const App = () => {
                 posts={posts}
               />
             </Route>
-            <Route path="/:id">
+            <Route path="/blog/:id">
               <SinglePost />
             </Route>
-            <Route path="/create">
+            <Route path="/create" exact>
               <Create 
                 user={user}
               />
             </Route>
-            <Route path="/shops">
+            <Route path="/shops" exact>
               <Shops />
             </Route>
             <Route path="/register">
               <Register />
             </Route>
-            <Route path="/login">
+            <Route path="/login" exact>
               {!auth && <Login />}
               {auth && <Home />}
             </Route>
-            <Route path="/products">
+            <Route path="/products" exact>
               <Products />
             </Route>
             <Route path="/">

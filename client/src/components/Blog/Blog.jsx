@@ -1,8 +1,9 @@
 import axios from 'axios';
-import React, {useState,useEffect} from 'react'
+import React, {useState,useEffect, Fragment} from 'react'
 import { Link } from 'react-router-dom';
 import Post from './Post'
 import SinglePost from './SinglePost/SinglePost';
+import './Blog.scss';
 
 function Blog() {
   const [posts, setPosts] = useState([]);
@@ -26,10 +27,15 @@ function Blog() {
    })
 
   return (
-    <div className='main'>
-    
-      <Link to="/create"><button>Create</button></Link>
-      {loadPosts}
+    <div className="row">
+      <div className='blog col-8'>
+        {loadPosts}
+      </div>
+      <div className="col-2">
+        <Link to="/create">
+        <h3>Share your tips!</h3>
+        <button className="btn btn-light">Create</button></Link>
+      </div>
     </div>
   )
 }

@@ -7,9 +7,12 @@ export default function SinglePost(props) {
   const [post, setPost] = useState({});
   const search = useLocation();
   let id = search.pathname;
-  id = id.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
-
+  
   useEffect(() => {
+    
+    let url = id.split('/');
+    id = url[2];
+    console.log('ID----',id);
     axios.get(`/api/post/${id}`)
     .then((res) => {
       // history.push(`/blog`);

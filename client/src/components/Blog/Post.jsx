@@ -23,13 +23,12 @@ function Post(props) {
   
   return (
     <div>
-      <Link to={`/${post.id}`}> 
+      <Link to={`/blog/${post.id}`}> 
       {/* <Link to='/'> */}
 
         <h2>{props.title}</h2>
         <p>{props.date}</p>
       </Link>
-        <p>{props.likes}</p>
 
         {/* {post} */}
     </div>
