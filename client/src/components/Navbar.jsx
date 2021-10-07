@@ -1,15 +1,29 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import './Navbar.scss'
 
-function Navbar() {
-  const history = useHistory();
+function Navbar(props) {
 
-  return (
-    <div className='nav'>
-      <button onClick={() => history.push('/login')}>Login/Signup</button>
-    </div>
-  )
+  if(!props.auth) {
+    return (
+      <div className='nav'>
+        <div className="item">
+          <button><Link to="/login">Login/Signup</Link></button>
+        </div>
+      </div>
+    )
+  } else {
+    return (
+      <div className='nav'>
+        <Link to="/blog">Idea</Link>
+        <Link to="/shops">Local Shops</Link>
+        Hello, {props.user.username}
+        <button onClick={props.logout}>Logout</button>
+      </div>
+    )
+  }
+  
+
 }
 
 export default Navbar

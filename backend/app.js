@@ -8,6 +8,7 @@ const dbHelpers = require('./helpers/dbHelpers')(db);
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var postRouter = require('./routes/post');
 
 var app = express();
 
@@ -20,5 +21,6 @@ app.use('/api/users', usersRouter(dbHelpers));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/api/post', postRouter)
 
 module.exports = app;
