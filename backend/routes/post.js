@@ -5,7 +5,7 @@ var router = express.Router();
 let client = require('../db/index');
 
 function newPost(post) {
-  const query = `INSERT INTO posts(title, body, likes) VALUES ('${post.title}', '${post.body}', ${post.likes})`;
+  const query = `INSERT INTO posts(title, body) VALUES ('${post.title}', '${post.body}')`;
   console.log('QUERY-----', query);
   client.query(query)
   .then(console.log('query has been executed successfully!'))
@@ -46,15 +46,15 @@ router.get('/:id', async (req, res) => {
   })
 });
 
-router.delete('/:id', async (req, res) => {
-  const postId = req.params.postId;
+// router.delete('/:id', async (req, res) => {
+//   const postId = req.params.postId;
 
-  const query = `DROP DATABASE [IF EXISTS] ${postId}`
+//   const query = `DROP DATABASE [IF EXISTS] ${postId}`
 
-  client.query(query)
-  .then(({ rows: posts}) => {
-    res.json(posts)
-  })
-});
+//   client.query(query)
+//   .then(({ rows: posts}) => {
+//     res.json(posts)
+//   })
+// });
 
 module.exports = router;
