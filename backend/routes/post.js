@@ -17,25 +17,46 @@ router.post('/', async (req, res) => {
   const {title, body, id} = req.body
   console.log('POST----',post);
 
-  newPost(post);
+  await newPost(post);
+  res.json();
 });
 
 router.get('/', async (req, res)=> {
-  console.log('OUTSIDE');
   const query = `
   SELECT *
   FROM posts;
   `
   client.query(query)
   .then(({ rows: posts }) => {
-    console.log('INSIDE');
     res.json(posts)
   })
 });
 
-router.get('/:postId', async (req, res) => {
-  const postId = req.params.postId;
-  console.log('POST ID------',postId);
-})
+router.get('/:id', async (req, res) => {
+  const id = req.params.id;
+
+  const query = `
+  SELECT *
+  FROM posts
+  WHERE id = ${id};
+  `
+  client.query(query)
+  .then(({ rows: post }) => {
+    res.json(post[0])
+  })
+});
+
+router.delete('/:id', async (req, res) => {
+  const id = req.params.id;
+
+  const query = `
+  DELETE FROM posts 
+  WHERE id=${id}`
+
+  client.query(query)
+  .then(({ rows: post }) => {
+    res.json(post[0])
+  })
+});
 
 module.exports = router;

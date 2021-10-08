@@ -5,7 +5,8 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-
+import axios from 'axios';
+import StateProvider from './components/Providers/StateProvider';
 import { createMuiTheme, ThemeProvider } from "@mui/material";
 import { useContext, useState } from "react";
 import { authContext } from "./components/Providers/AuthProvider";
@@ -18,6 +19,7 @@ import Shops from "./components/Shops/Shops";
 import Blog from './components/Blog/Blog';
 import Create from './components/Blog/SinglePost/Create';
 import SinglePost from './components/Blog/SinglePost/SinglePost';
+import Post from './components/Blog/Post';
 
 const theme = createMuiTheme({
   palette: {
@@ -50,6 +52,7 @@ const App = () => {
   ));
 
   const [posts, setPosts] = useState([]);
+  // const {post} = Post();
 
   //login
   const { auth, user, logout } = useContext(authContext);
@@ -59,13 +62,16 @@ const App = () => {
       <Router>
         <div className="App">
           <Switch>
-            <Route path="/blog">
+            <Route path="/blog" exact>
               <Blog 
+                user={user}
                 posts={posts}
               />
             </Route>
-            <Route path="/singlepage">
-              <SinglePost />
+            <Route path="/blog/:id">
+              <StateProvider>
+                <SinglePost />
+              </StateProvider>
             </Route>
             <Route path="/create">
               <Create 
