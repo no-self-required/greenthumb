@@ -44,17 +44,14 @@ export default function Search(props) {
             console.log(error)
           }
         }}>
-        <div id="textAddress">
-          <TextField 
-            id="mapsText"
-            variant="outlined"
-            color="white"
-            value={value} 
-            onChange={e => setValue(e.target.value)}
-            disabled={!ready}
-            placeholder="Enter an address"
-          />
-        </div>
+
+        <ComboboxInput 
+          value={value} 
+          onChange={e => setValue(e.target.value)}
+          disabled={!ready}
+          placeholder="Enter an address"
+        />
+
         <ComboboxPopover>
           {status === 'OK' && 
             data.map(({id, description}) => (
