@@ -25,7 +25,7 @@ function SingleProduct({ name, price, rating, img, details, clickSave }) {
           <div id="cardcontent">
             <CardContent>
               <div className="info">
-                <Typography variant="body2">{name}</Typography>
+                <Typography variant="body3">{name}</Typography>
                 <Typography variant="body2">{price}</Typography>
               </div>
             </CardContent>
