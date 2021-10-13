@@ -2,6 +2,9 @@
 Search for an eco-friendly version of any product and find local stores that sell them. 
 
 # Screenshots
+!["Homepage"](https://raw.githubusercontent.com/no-self-required/greenthumb/main/docs/homepage.png)
+!["Login"](https://raw.githubusercontent.com/no-self-required/greenthumb/main/docs/GTlogin2.png)
+!["Products"](https://raw.githubusercontent.com/no-self-required/greenthumb/main/docs/GTproducts.png)
 
 # Dependencies
 - material-ui/core (4.12.3)
