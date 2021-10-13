@@ -44,7 +44,7 @@ export default function Shops() {
   const { auth, user, logout } = useContext(authContext);
 
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyCOyqdA8P_YF6V0Kvfkn_XURrQoR5xT5bM",
+    googleMapsApiKey: "",
     libraries,
   });
 
